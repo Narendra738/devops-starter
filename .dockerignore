@@ -1,0 +1,21 @@
+# Ignore dependencies
+node_modules
+npm-debug.log
+yarn-error.log
+package-lock.json
+
+dist
+build
+
+.git
+.gitignore
+
+.vscode
+.idea
+*.swp
+*.swo
+
+
+Dockerfile
+.dockerignore
+nginx.conf
