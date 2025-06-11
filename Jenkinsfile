@@ -1,23 +1,23 @@
 pipeline {
     agent any
-
     stages {
-        stage('Clone Code') {
+        stage('Checkout') {
             steps {
-                git 'git@github.com:Narendra738/devops-starter.git'
+                git url: 'git@github.com:Narendra738/devops-starter.git', branch: 'master'
             }
         }
-
         stage('Build Docker Image') {
             steps {
-                sh 'docker build -t devops-starter .'
+                sh 'docker build -t my-vite-react-app:latest .'
             }
         }
-
-        stage('Run Docker Container') {
+        stage('Deploy to EC2') {
             steps {
-                sh 'docker stop react || true && docker rm react || true'
-                sh 'docker run -d -p 80:80 --name react devops-starter'
+                sh '''
+                         docker stop my-vite-react-app || true
+                         docker rm -f my-vite-app || true
+                         docker run -d -v 80:80 --name my-vite-app my-vite-react-app:latest
+                     '''
             }
         }
     }
