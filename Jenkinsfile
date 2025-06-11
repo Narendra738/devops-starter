@@ -3,7 +3,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git url: 'git@github.com:Narendra738/devops-starter.git', branch: 'master'
+                git url: 'https://github.com/Narendra738/devops-starter.git', branch: 'master'
             }
         }
         stage('Build Docker Image') {
